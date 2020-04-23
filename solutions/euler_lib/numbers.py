@@ -27,3 +27,6 @@ def primes_below(n:int):
 
 def num_to_digitlist(n:int)->list:
     return [int(d) for d in str(n)]
+
+def is_palindrome(n:int)->bool:
+    return str(n) == str(n)[::-1]
