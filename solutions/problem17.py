@@ -29,7 +29,7 @@ NUM_WORDS_MAP = {
         19: "nineteen",
         20: "twenty",
         30: "thirty",
-        40: "fourty",
+        40: "forty",
         50: "fifty",
         60: "sixty",
         70: "seventy",
@@ -39,18 +39,30 @@ NUM_WORDS_MAP = {
         1000: "thousand"
 }
 
-def num_to_words(n:int, prefix:str="")->str:
-    words = ""
-    if n<20:
-        words = NUM_WORDS_MAP[n]
+def count_str_number(n:int)->int:
+    if 1<=n<20:
+        return  len(NUM_WORDS_MAP[n])
     elif 20<=n<100:
-        pass
-    else:
-        pass
-    return words
+        return len(NUM_WORDS_MAP[10*(n//10)]) + count_str_number(n%10)
+    elif 100<=n<1000:
+        return len(NUM_WORDS_MAP[100]) + count_str_number(n//100) + len("and") + count_str_number(n%100)
+    elif n==1000:
+        return len(NUM_WORDS_MAP[1]) + len(NUM_WORDS_MAP[1000])
+
+    return 0 # range invalid
 
 
 if __name__ == "__main__":
-    LIMIT = 10
+    LIMIT = 1000
+    sum_letters = 0
+
+    assert count_str_number(115) == 20
+    assert count_str_number(342) == 23
+    
     for i in range(1, LIMIT+1):
-        print(num_to_words(i))
+        sum_letters+=count_str_number(i)
+        print(f"sum from 1 to {i}: {sum_letters}")
+
+
+
+    print(f"solution: {sum_letters}")
