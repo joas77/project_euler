@@ -8,5 +8,19 @@ The proper divisors of 284 are 1, 2, 4, 71 and 142; so d(284) = 220.
 Evaluate the sum of all the amicable numbers under 10000.
 """
 from euler_lib.numbers import proper_divisors
+
+def d(n):
+    return sum(proper_divisors(n))
+
 if __name__ == "__main__":
-    pass
+    amicable_pairs = []
+    amicable_nums = set()
+    for a in range(1, 10000+1):
+        if a not in amicable_nums:
+            b = d(a)
+            if d(b) == a and a!=b:
+                amicable_pairs.append((a,b))
+                amicable_nums.update({a,b})
+
+    print(amicable_pairs)
+    print(f"sum of amicable numbers under 10000 = {sum(amicable_nums)}")
