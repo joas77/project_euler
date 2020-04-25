@@ -30,3 +30,7 @@ def num_to_digitlist(n:int)->list:
 
 def is_palindrome(n:int)->bool:
     return str(n) == str(n)[::-1]
+
+def is_square(n:int)->bool:
+    sqrt = int(math.sqrt(n))
+    return sqrt*sqrt == n

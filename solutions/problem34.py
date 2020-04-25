@@ -1,0 +1,15 @@
+# https://projecteuler.net/problem=34
+
+"""
+145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
+Find the sum of all numbers which are equal to the sum of the factorial of their digits.
+Note: as 1! = 1 and 2! = 2 are not sums they are not included.
+"""
+
+# see factorians task solution in my rossetaCode repo:
+# TODO: add repo's link
+# https://rosettacode.org/wiki/Factorions
+if __name__ == "__main__":
+    
+    solution = sum([145, 40585])
+    print(f"solution: {solution}")
