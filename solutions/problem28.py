@@ -20,12 +20,14 @@ S[k] =  s[k-1] + L[k] - 1
 S[k] =  s[k-1] + 2 * ceil(k/4)
 s[0] = 1
 """
-import math
+# import math
 
-def spiral_seq(n):
-    s = 1
-    for k in range(n):
-        s = s + 2 * math.ceil(k/4)
-        yield s
+# def spiral_seq(n):
+#     s = 1
+#     for k in range(n):
+#         s = s + 2 * math.ceil(k/4)
+#         yield s
+
+from euler_lib.sequences import spiral_seq
 
 print(f"sum of the numbers on the diagonasl in a 1001 x 1001 spiral: {sum(spiral_seq(2001))}")
