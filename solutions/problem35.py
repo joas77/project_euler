@@ -14,7 +14,7 @@ def digits_rotations(n):
     rotations = [n]
 
     if num_digits == 1:
-        yield rotations
+        yield n
 
     for _ in range(num_digits -1):
         
@@ -31,14 +31,18 @@ def digits_rotations(n):
 
 if __name__ == "__main__":
     circular_primes = []
+    circular_prime_counter = 0
 
-    for i in range(2,20):
+    for i in range(2,int(1E6)):
         is_circular_prime = True
-        for r in digits_rotations(i):
-            if not is_prime(r):
-                is_circular_prime = False
+        if is_prime(i):
+            for r in digits_rotations(i):
+                if not is_prime(r):
+                    is_circular_prime = False
+                    break
         
-        if is_circular_prime:
-            circular_primes.append(i)
+            if is_circular_prime:
+                circular_primes.append(i)
+                circular_prime_counter +=1
 
-    print(circular_primes)
+    print(circular_prime_counter)
