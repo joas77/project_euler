@@ -1,2 +1,4 @@
 .vscode
 solutions/euler_lib/__pycache__/
+solutions/*.pyc
+solutions/euler_lib/*.pyc
