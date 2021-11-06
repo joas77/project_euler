@@ -1,5 +1,7 @@
 import math
 
+from . import numbers
+
 def triangle(n: int) -> int:
     return int(n*(n+1)/2)
 
@@ -8,6 +10,16 @@ def pentagonal(n: int) -> int:
 
 def hexagonal(n: int) -> int:
     return int(n*(2*n - 1))
+
+def square_digit_chain(n):
+    digits = numbers.num_to_digitlist(n)
+    node = n
+
+    while 1 != node != 89:
+        node = sum(d*d for d in digits)
+        digits = numbers.num_to_digitlist(node)
+        yield node
+
 
 def spiral_seq(n):
     s = 1
