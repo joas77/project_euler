@@ -4,23 +4,18 @@
 Find the unique positive integer whose square has the form 1_2_3_4_5_6_7_8_9_0, (19 digits)
 where each “_” is a single digit.
 """
-
-
-def is_concealed_square(n):
-    n_squared_str = str(n*n)
-
-    for i, digit in enumerate(n_squared_str[0::2], start=1):
-        if int(digit)%10 != i: # Falta comparar con el 0!!
-            return False
-
-    return True        
-
+    
+import math
 if __name__ == "__main__":
-    n = int(1e9)
+    n = 1
 
-    while not is_concealed_square(n):
-        if n%10000 == 0:
+    max_number = 1929394959697989990
+    max_sqrt = int(math.sqrt(max_number))
+    n = max_sqrt
+
+    while str(n*n)[::2] != "1234567890":
+        if n%1000 == 0:
             print(n)
-        n += 1
+        n-=1
 
     print(f"{n}^2 = {n*n}")
