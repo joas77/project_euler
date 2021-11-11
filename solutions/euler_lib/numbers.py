@@ -56,3 +56,23 @@ def is_palindrome(n:int)->bool:
 def is_square(n:int)->bool:
     sqrt = int(math.sqrt(n))
     return sqrt*sqrt == n
+
+def distinct_prime_factors(n:int)->set:
+    d = 2
+    factors = {1}
+    while n!=1:
+        if n%d == 0:
+            factors.add(d)
+            n = n // d
+        else:
+            d+=1
+        
+    return factors
+
+def rad(n:int)->int:
+    radical = 1
+    for p in distinct_prime_factors(n):
+        radical *= p
+
+    return radical
+
