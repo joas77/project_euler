@@ -9,6 +9,22 @@ By mathematical analysis, it can be shown that all integers greater than 28123 c
 However, this upper limit cannot be reduced any further by analysis even though it is known that the greatest number that cannot be expressed as the sum of two abundant numbers is less than this limit.
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 """
+import itertools
+import euler_lib.numbers as nums
 
 if __name__ == "__main__":
-    pass
+    # first  find all abundant numbers until 28123
+    abundants = []
+    for i in range(1, 28_123 +1):
+        if nums.is_abundant(i):
+            abundants.append(i)
+
+    print(f"there are {len(abundants)} abundant numbers from 1 to 28,123")
+
+    numbers = set(range(1, 28_123 + 1))
+
+    for x, y in itertools.combinations_with_replacement(abundants, 2):
+        if x + y in numbers:
+            numbers.remove(x+y)
+
+    print(f"sum of integers which cannot be writen as the sum of two abundant numbers: {sum(numbers)}")

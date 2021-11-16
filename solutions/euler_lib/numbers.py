@@ -2,7 +2,7 @@ import math
 
 def divisors(n:int)->set:
     divs = set()
-    for i in range(1, n//4 + 1):
+    for i in range(1, int(math.sqrt(n)) + 1):
         if n%i == 0:
             divs.add(i)
             divs.add(n//i)
@@ -13,6 +13,12 @@ def proper_divisors(n:int)->set:
     pdivisors = divisors(n)
     pdivisors.discard(n)
     return pdivisors
+
+def is_perfect(n:int)->bool:
+    return sum(proper_divisors(n)) == n
+
+def is_abundant(n:int)->bool:
+    return sum(proper_divisors(n)) > n
 
 def is_prime(n:int)->bool:
     if n <= 1: return False
