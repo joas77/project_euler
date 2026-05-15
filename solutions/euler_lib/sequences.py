@@ -1,9 +1,26 @@
 import math
+from functools import cache
 
 from . import numbers
 
+@cache
+def fib(n):
+    if n == 0: return 0
+    if n == 1: return 1
+    return fib(n-1) + fib(n-2)
+
+@cache
+def fib_gen(n):
+    if n == 0: return 0
+    if n == 1: return 1
+    yield fib(n-1) + fib(n-2)
+
+
 def triangle(n: int) -> int:
     return int(n*(n+1)/2)
+
+def square(n: int) -> int:
+    return n*(n+1)*(2*n+1)/6
 
 def pentagonal(n: int) -> int:
     return int(n*(3*n-1)/2)
