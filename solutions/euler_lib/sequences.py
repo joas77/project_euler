@@ -3,18 +3,15 @@ from functools import cache
 
 from . import numbers
 
-@cache
-def fib(n):
-    if n == 0: return 0
-    if n == 1: return 1
-    return fib(n-1) + fib(n-2)
-
-@cache
-def fib_gen(n):
-    if n == 0: return 0
-    if n == 1: return 1
-    yield fib(n-1) + fib(n-2)
-
+def fib_gen():
+    f1 = f2 = 1
+    yield 1
+    yield 1
+    while True:
+        fn = f1 + f2
+        f2 = f1
+        f1 = fn
+        yield fn
 
 def triangle(n: int) -> int:
     return int(n*(n+1)/2)
