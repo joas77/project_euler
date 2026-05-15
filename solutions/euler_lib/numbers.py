@@ -34,6 +34,12 @@ def primes():
             yield i
         i += 1
 
+def primegen(n: int):
+    """ yields the first n primes """
+    ps = primes()
+    for i in range(n):
+        yield next(ps)
+
 def primes_below(n:int):
     for i in range(2, n+1):
         if is_prime(i):
