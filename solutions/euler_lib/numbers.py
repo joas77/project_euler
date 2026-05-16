@@ -71,14 +71,13 @@ def is_square(n:int)->bool:
 
 def distinct_prime_factors(n:int)->set:
     d = 2
-    factors = {1}
+    factors = set()
     while n!=1:
         if n%d == 0:
             factors.add(d)
             n = n // d
         else:
             d+=1
-        
     return factors
 
 def rad(n:int)->int:
