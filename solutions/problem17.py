@@ -6,7 +6,6 @@
 # 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. 
 # The use of "and" when writing out numbers is in compliance with British usage.
 
-
 NUM_WORDS_MAP = {
         1: "one",
         2: "two",
@@ -39,30 +38,33 @@ NUM_WORDS_MAP = {
         1000: "thousand"
 }
 
-def count_str_number(n:int)->int:
+def number_to_word(n:int)->int:
     if 1<=n<20:
-        return  len(NUM_WORDS_MAP[n])
+        return  NUM_WORDS_MAP[n]
     elif 20<=n<100:
-        return len(NUM_WORDS_MAP[10*(n//10)]) + count_str_number(n%10)
+        return f"{NUM_WORDS_MAP[10*(n//10)]} {number_to_word(n%10)}"
     elif 100<=n<1000:
-        return len(NUM_WORDS_MAP[100]) + count_str_number(n//100) + len("and") + count_str_number(n%100)
+        units = number_to_word(n % 100)
+        return f"{number_to_word(n//100)} {NUM_WORDS_MAP[100]} {"and " + units if len(units)>0 else "" }"
     elif n==1000:
-        return len(NUM_WORDS_MAP[1]) + len(NUM_WORDS_MAP[1000])
+        return f"{NUM_WORDS_MAP[1]} {NUM_WORDS_MAP[1000]}"
 
-    return 0 # range invalid
+    return ""
 
+def count_char_word_number(nstr: str) -> int:
+    words = nstr.split()
+    return sum(len(w) for w in words)
 
 if __name__ == "__main__":
     LIMIT = 1000
     sum_letters = 0
 
-    assert count_str_number(115) == 20
-    assert count_str_number(342) == 23
-    
+    assert count_char_word_number( number_to_word(115) ) == 20
+    assert count_char_word_number( number_to_word(342) ) == 23
+
     for i in range(1, LIMIT+1):
-        sum_letters+=count_str_number(i)
-        print(f"sum from 1 to {i}: {sum_letters}")
-
-
+        number = number_to_word(i)
+        sum_letters += count_char_word_number(number)
+        print(f"{i} --> {number}")
 
     print(f"solution: {sum_letters}")
