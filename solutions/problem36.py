@@ -20,6 +20,3 @@ if __name__ == "__main__":
 
     print(f"sum of double base palindromes: {sum(double_base_pals)}")
 
-
-    # TODO: check solution in https://www.geeksforgeeks.org/double-base-palindrome/
-    # and fix script
