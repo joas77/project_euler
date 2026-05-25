@@ -2,7 +2,6 @@ import itertools
 
 PANDIGITAL_MAX = "9876543210"
 
-psum = 0
 s= sum(
     int("".join(p)) for p in itertools.permutations(PANDIGITAL_MAX)
         if int("".join(p[1:4])) % 2 == 0 and \
