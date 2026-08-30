@@ -20,6 +20,14 @@ def is_perfect(n:int)->bool:
 def is_abundant(n:int)->bool:
     return sum(proper_divisors(n)) > n
 
+def is_sorted(l):
+    ls = sorted(l)
+    return l == ls or l == ls[::-1]
+
+def is_bouncy(n:int)->bool:
+    digits = num_to_digitlist(n)
+    return not is_sorted(digits)
+
 def is_prime(n:int)->bool:
     if n <= 1: return False
     for i in range(2, int(math.sqrt(n))+1):
