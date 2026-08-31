@@ -1,7 +1,4 @@
 from euler_lib import numbers as nums
-def is_sorted(l):
-    ls = sorted(l)
-    return l == ls or l == ls[::-1]
 
 def solution():
     bouncy_counter = 0
