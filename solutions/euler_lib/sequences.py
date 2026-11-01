@@ -1,7 +1,17 @@
 import math
+from fractions import Fraction
 from functools import cache
 
 from . import numbers
+
+def farey(n: int):
+    a, b, c, d = 0, 1, 1, n
+    yield Fraction(a, b)
+    while 0 <=  c <= n:
+        k = (n + b)//d
+        a, b, c, d = c, d, k*c - a, k*d - b
+        yield Fraction(a, b)
+
 
 def fib_gen():
     f1 = f2 = 1

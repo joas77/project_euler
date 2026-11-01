@@ -30,10 +30,10 @@ class Card:
     def __init__(self, card):
         self.card = card
         self.value = self.cards_rank[card[0]]
-        self.suite = card[1]
+        self.suite = card[1]# SUITS[card[1]]
 
     def __str__(self):
-        return super().__str__()
+        return f"{self.value} {self.suite}"
 
 class Poker:
     def __init__(self, cards):
@@ -56,6 +56,5 @@ class Poker:
             pass
 
 if __name__ == "__main__":
-    
     player1 = Poker(["5H", "5C", "6S", "7S", "KD"])
     print(player1.high_card())
